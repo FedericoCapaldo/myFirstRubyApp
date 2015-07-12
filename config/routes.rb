@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'contact' => 'static_pages#contact'
   get 'siamonoi' => 'static_pages#siamonoi'
   get 'thirdpage' => 'static_pages#thirdpage'
-  resources :users
+  resources :users #this ensures that HTTP post requrests with action='/users' are handled by create action.
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
