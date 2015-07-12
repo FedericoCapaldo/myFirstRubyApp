@@ -14,6 +14,8 @@ class UsersController < ApplicationController
 
   	if @user.save
   		#handle successful signup
+  		flash[:success] = "Welcome to your new 'Sample_app' account!!"
+  		redirect_to @user #== redirect_to user_url(@user)
   	else
   		render 'new'
 		end
@@ -24,6 +26,8 @@ class UsersController < ApplicationController
 	  
 	  #remember the implicit return of the last statement
 	  def user_params 
+	  	#these are STRONG parameters, it is secure, because you allow only 
+	  	#the paramenters that you name. this avoids manipulation of the database by malicious users.
 	  	params.require(:user).permit(:name, :email, :password, 
 	  								:password_confirmation)
 	  end
