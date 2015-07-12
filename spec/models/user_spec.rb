@@ -3,12 +3,16 @@ require 'rails_helper'
 
 
 RSpec.describe User, type: :model do
-  #this is how to create an object 'user' of type User and then test it
-  let(:user) { User.new(name: "Federico", email: "federico@kcl.uk") }
+  #let(:user) { User.new(name: "Federico", email: "federico@kcl.uk") }
 
-  it "should save the the user successfully" do 
-  	 user.should respond_to(:save)
-  	 user.save.should be_true
-  end 
-
+	context "data validation" do 
+		#this allows to create a user for each it case without repeating it every time
+		before(:each) do
+			@user = User.new(name: "federico", email: "federico@gmail.uk", password: "chocol")
+		end
+	  
+	  it "should report invalid user" do
+	  	expect(@user.valid?).to eq(true)
+	  end
+	end
 end

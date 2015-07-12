@@ -24,10 +24,16 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 #bootstrap gem to add style to my page
-gem 'bootstrap-sass',       '3.2.0.0'
+gem 'bootstrap-sass', '3.2.0.0'
 
 #rspec for testing
 gem 'rspec-rails', '~> 3.3.2'
+
+#shoulda-matchers provides methods to help with Rspec testing
+gem 'shoulda-matchers'
+
+#Bcrypt used to encrypt the password of your database with a irreversible hash function + salt
+gem 'bcrypt', '3.1.7'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
