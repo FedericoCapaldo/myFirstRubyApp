@@ -8,7 +8,7 @@ RSpec.describe StaticPagesController, :type => :controller do
 		it "should return status 200 when loaded" do
 			get :contact #get to get the page you want
 			expect(response).to have_http_status(200)
-		 #expect(response.status).to eq(200) #equal way to test	
-		end 
+		 #expect(response.status).to eq(200) #equal way to test
+		end
 	end
 end
