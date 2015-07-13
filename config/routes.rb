@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
   root 'static_pages#home'
   get 'signup' => 'users#new'
   get 'help' => 'static_pages#help'
@@ -6,21 +8,14 @@ Rails.application.routes.draw do
   get 'contact' => 'static_pages#contact'
   get 'siamonoi' => 'static_pages#siamonoi'
   get 'thirdpage' => 'static_pages#thirdpage'
-  resources :users # this ensures that HTTP post requrests
-  # with action='/users' are handled by create action.
-
-  # The priority is based upon order of creation: first created.
-  # -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+  # resource route (maps HTTP verbs to controller actions automatically)
+  resources :users
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically)
-  #   resources :products
+  # get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route with options:
   #   resources :products do
