@@ -1,3 +1,4 @@
+# add fields to user table
 class CreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
