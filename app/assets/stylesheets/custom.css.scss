@@ -56,10 +56,10 @@ footer {
 
   border-top: 1px solid #eaeaea;
   color: #777;
-	
+
 	a {
 	  color: #555;
-	 	
+
 	 	&:hover {
 	 		color: #222;
 	 	}
@@ -72,13 +72,13 @@ footer {
 	ul {
   	float: right;
   	list-style: none;
-		
+
 		li {
   		float: left;
   		margin-left: 15px;
 		}
 	}
-} 
+}
 
 
 @mixin box_sizing {
@@ -168,10 +168,3 @@ input {
     color: $state-danger-text;
   }
 }
-
-
-
-
-
-
-
