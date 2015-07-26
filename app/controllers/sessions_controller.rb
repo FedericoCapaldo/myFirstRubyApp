@@ -6,14 +6,11 @@ class SessionsController < ApplicationController
 
   def create # post HTTP when a session is created.
     user = User.find_by(email: params[:session][:email].downcase)
-
     # if the user exists and the password matches, log in
     if user && user.authenticate(params[:session][:password])
       log_in user
+      params[:session][:remember_me] == 1 ? remember(user) : forget(user)
       # this saves the cookie: permanent = for 20 years, signed = encrypted.
-      cookies.permanent.signed[:user_id] = user.id
-      cookies.permanent[:remember_token] = user.remember_token
-      remember user
       redirect_to user # redirect to "view profile", calling show function.
       # through resources :users (I guess).
     else
