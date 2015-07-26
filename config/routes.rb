@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'thirdpage' => 'static_pages#thirdpage'
   # resource route (maps HTTP verbs to controller actions automatically)
   resources :users
+
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
