@@ -20,7 +20,9 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out
-    flash.now[:success] = 'Successfully Logged Out.'
+    flash[:success] = 'Successfully Logged Out.' # use flash.now if you render
+    # and not if you redirect, because in that case flash would last more than
+    # needed.
     redirect_to root_path
   end
 end
