@@ -9,8 +9,10 @@ class SessionsController < ApplicationController
     # if the user exists and the password matches, log in
     if user && user.authenticate(params[:session][:password])
       log_in user
+
       params[:session][:remember_me] == 1 ? remember(user) : forget(user)
       # this saves the cookie: permanent = for 20 years, signed = encrypted.
+
       redirect_to user # redirect to "view profile", calling show function.
       # through resources :users (I guess).
     else

@@ -36,7 +36,8 @@ class User < ActiveRecord::Base
     update_attribute(:remember_digest, User.digest(remember_token))
   end
 
-  def authenticated? # remember token is verified againts the one of the user
+  # remember token is verified againts the one of the user
+  def authenticated?(remember_token)
     return false if remember_token.nil?
     BCrypt::Password.new(remember_digest).is_password(remember_token)
   end
