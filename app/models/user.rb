@@ -21,8 +21,12 @@ class User < ActiveRecord::Base
 
   # Returns the hash digest of the given string.
   def User.digest(string)
-    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-                                                  BCrypt::Engine.cost
+    cost = nil
+    if ActiveModel::SecurePassword.min_cost
+      cost = BCrypt::Engine::MIN_COST
+    else
+      cost = BCrypt::Engine.cost
+    end
     BCrypt::Password.create(string, cost: cost)
   end
 

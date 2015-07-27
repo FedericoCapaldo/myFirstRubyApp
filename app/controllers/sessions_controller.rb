@@ -4,15 +4,13 @@ class SessionsController < ApplicationController
   def new
   end
 
+  # rubocop:disable Metrics/AbcSize
   def create # post HTTP when a session is created.
     user = User.find_by(email: params[:session][:email].downcase)
     # if the user exists and the password matches, log in
     if user && user.authenticate(params[:session][:password])
-      log_in user
-
+      log_in user # log in the user with method defined in the session_helper
       params[:session][:remember_me] == 1 ? remember(user) : forget(user)
-      # this saves the cookie: permanent = for 20 years, signed = encrypted.
-
       redirect_to user # redirect to "view profile", calling show function.
       # through resources :users (I guess).
     else
