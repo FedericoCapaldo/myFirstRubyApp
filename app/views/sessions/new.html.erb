@@ -12,9 +12,9 @@
       <%= f.password_field :password, class: 'form-control' %>
       
       <!-- Example: this label is accessible from params[:session][:remember_me] -->
-      <%= f.label :remember_me, class: "checkbox inline" do%> 
-        <%= f.check_box :remember_me %>
-        <span>Remember me</span>
+      <%= f.label :remember_me, class: "checkbox inline" do %>
+      <%= f.check_box :remember_me %>
+      <span>Remember me on this computer</span>
       <% end %>
      
       <%= f.submit "Log in", class: "btn btn-primary" %>

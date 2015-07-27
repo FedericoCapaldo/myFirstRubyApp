@@ -10,6 +10,8 @@ class SessionsController < ApplicationController
     # if the user exists and the password matches, log in
     if user && user.authenticate(params[:session][:password])
       log_in user # log in the user with method defined in the session_helper
+      remember user
+      # 1 == checked box of remember me.w
       params[:session][:remember_me] == 1 ? remember(user) : forget(user)
       redirect_to user # redirect to "view profile", calling show function.
       # through resources :users (I guess).
